@@ -33,6 +33,18 @@ Ext.application({
                                 rootProperty: 'responseData.feed.entries'
                             }
                         }
+                    },
+
+                    detailCard: {
+                        xtype: 'panel',
+                        scrollable: true,
+                        styleHtmlContent: true
+                    },
+
+                    listeners: {
+                        itemtap: function(nestedList, list, index, element, post) {
+                            this.getDetailCard().setHtml(post.get('content'));
+                        }
                     }
                 }
             ]
