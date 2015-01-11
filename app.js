@@ -8,6 +8,18 @@ Ext.application({
 
             items: [
                 {
+                    title: 'Home',
+                    iconCls: 'home',
+                    cls: 'home',
+                    html: [
+                        '',
+                        'Welcome to Sencha Touch',
+                        "We're creating the Getting Started app, which demonstrates how ",
+                        "to use tabs, lists, and forms to create a simple app.",
+                        'Sencha Touch'
+                    ].join("")
+                },
+                {
                     xtype: 'nestedlist',
                     title: 'Blog',
                     iconCls: 'star',
@@ -46,6 +58,44 @@ Ext.application({
                             this.getDetailCard().setHtml(post.get('content'));
                         }
                     }
+                },
+                {
+                    title: 'Contact',
+                    iconCls: 'user',
+                    xtype: 'formpanel',
+                    url: 'contact.php',
+                    layout: 'vbox',
+
+                    items: [
+                        {
+                            xtype: 'fieldset',
+                            title: 'Contact Us',
+                            instructions: '(email address is optional)',
+                            height: 285,
+                            items: [
+                                {
+                                    xtype: 'textfield',
+                                    label: 'Name'
+                                },
+                                {
+                                    xtype: 'emailfield',
+                                    label: 'Email'
+                                },
+                                {
+                                    xtype: 'textareafield',
+                                    label: 'Message'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'button',
+                            text: 'Send',
+                            ui: 'confirm',
+                            handler: function() {
+                                this.up('formpanel').submit();
+                            }
+                        }
+                    ]
                 }
             ]
         });
